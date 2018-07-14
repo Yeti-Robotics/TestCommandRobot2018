@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team3506.robot;
 
+import org.usfirst.frc.team3506.robot.commands.DistanceDriveCommand;
 import org.usfirst.frc.team3506.robot.commands.LiftCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
 import org.usfirst.frc.team3506.robot.commands.UniversalTimedDriveCommand;
@@ -39,6 +40,8 @@ public class OI {
 		JoystickButton claw8 = new JoystickButton(clawJoystick, 8);
 		JoystickButton claw9 = new JoystickButton(clawJoystick, 9);
 		JoystickButton claw10 = new JoystickButton(clawJoystick, 10);
+		JoystickButton right6 = new JoystickButton(rightJoystick, 6);
+		JoystickButton right7 = new JoystickButton(rightJoystick, 7);
 		
 		left8.whenPressed(new UniversalTimedDriveCommand(0.7, -0.7, 3));
 		left9.whenPressed(new UniversalTimedDriveCommand(-0.7, 0.7, 3));
@@ -49,5 +52,7 @@ public class OI {
 		claw8.whenPressed(new UserGrabberCommand(false));
 		claw9.whileHeld(new LiftCommand(-0.5));
 		claw10.whileHeld(new LiftCommand(0.5));
+//		right6.whenPressed(new DistanceDriveCommand(-0.7, 12));
+//		right7.whenPressed(new DistanceDriveCommand(0.7, 12));
 	}
 }

@@ -8,11 +8,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class TestCommandGroup extends CommandGroup {
 
     public TestCommandGroup() {
-        addSequential(new UniversalTimedDriveCommand(-0.7, -0.7, 3)); // drive straight
         addParallel(new UserGrabberCommand(true));
-        addParallel(new UserIntakeCommand(0.5), 3);
-        addSequential(new UniversalTimedDriveCommand(-0.7, 0.7, 3)); // turn right
+        addSequential(new DistanceDriveCommand(-0.6, -0.6, 60, 60));
         addParallel(new UserGrabberCommand(false));
-        addSequential(new UniversalTimedDriveCommand(-0.7, -0.7, 3)); // drive straight
+        addSequential(new DistanceDriveCommand(-0.6, 0.6, 24, 24));
+        addSequential(new DistanceDriveCommand(-0.6, -0.6, 60, 60));
     }
 }
