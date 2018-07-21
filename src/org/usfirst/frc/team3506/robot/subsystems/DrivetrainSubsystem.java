@@ -20,6 +20,12 @@ public class DrivetrainSubsystem extends Subsystem {
 	Spark rightMiddleMotor;
 	Encoder leftEncoder;
 	Encoder rightEncoder;
+	int wheelDiameter = 6;
+    int pulsesPerRev = 2048;
+    double distancePerPulse = Math.PI * wheelDiameter / pulsesPerRev;
+    
+    double pulsesPer360 = 11280;
+    double degreePerPulse = 360.0 / pulsesPer360;
 
 	public DrivetrainSubsystem() {
 		leftFrontMotor = new Spark(0);
@@ -34,13 +40,6 @@ public class DrivetrainSubsystem extends Subsystem {
 		
 		leftEncoder = new Encoder(1, 0, true, EncodingType.k4X);
 		rightEncoder = new Encoder(2, 3, true, EncodingType.k4X);
-		
-		int wheelDiameter = 6;
-		int pulsesPerRev = 2048;
-		double distancePerPulse = Math.PI * wheelDiameter / pulsesPerRev;
-		
-		leftEncoder.setDistancePerPulse(distancePerPulse);
-		rightEncoder.setDistancePerPulse(distancePerPulse);
 	}
 
 	public void initDefaultCommand() {
@@ -60,6 +59,14 @@ public class DrivetrainSubsystem extends Subsystem {
 		return leftEncoder.getDistance();
 	}
 	
+	public double getLeftEndcoderPulses() {
+	    return leftEncoder.get();
+	}
+	
+	public double getRightEndcoderPulses() {
+	    return rightEncoder.get();
+	}
+	
 	public double getRightEncoderDistance() {
 		return rightEncoder.getDistance();
 	}
@@ -67,6 +74,16 @@ public class DrivetrainSubsystem extends Subsystem {
 	public void resetEncoders() {
 		leftEncoder.reset();
 		rightEncoder.reset();
+	}
+	
+	public void setEncoderDistance() {
+	    leftEncoder.setDistancePerPulse(distancePerPulse);
+        rightEncoder.setDistancePerPulse(distancePerPulse);
+	}
+	
+	public void setEncoderAngle() {
+	    leftEncoder.setDistancePerPulse(degreePerPulse);
+        rightEncoder.setDistancePerPulse(degreePerPulse);
 	}
 }
 

@@ -7,8 +7,9 @@
 
 package org.usfirst.frc.team3506.robot;
 
-import org.usfirst.frc.team3506.robot.commands.DistanceDriveCommand;
+import org.usfirst.frc.team3506.robot.commands.AngleTurnCommand;
 import org.usfirst.frc.team3506.robot.commands.LiftCommand;
+import org.usfirst.frc.team3506.robot.commands.RectangleDriveCommandGroup;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
 import org.usfirst.frc.team3506.robot.commands.UniversalTimedDriveCommand;
 import org.usfirst.frc.team3506.robot.commands.UserGrabberCommand;
@@ -42,8 +43,11 @@ public class OI {
 		JoystickButton claw10 = new JoystickButton(clawJoystick, 10);
 		JoystickButton right6 = new JoystickButton(rightJoystick, 6);
 		JoystickButton right7 = new JoystickButton(rightJoystick, 7);
+		JoystickButton claw2 = new JoystickButton(clawJoystick, 2);
+		JoystickButton claw3 = new JoystickButton(clawJoystick, 3);
+		JoystickButton claw4 = new JoystickButton(clawJoystick, 4);
 		
-		left8.whenPressed(new UniversalTimedDriveCommand(0.7, -0.7, 3));
+		left8.whenPressed(new UniversalTimedDriveCommand(0.4, -0.4, 3));
 		left9.whenPressed(new UniversalTimedDriveCommand(-0.7, 0.7, 3));
 		left7.whenPressed(new TestCommandGroup());
 		left11.whileHeld(new UserIntakeCommand(0.5));
@@ -54,5 +58,8 @@ public class OI {
 		claw10.whileHeld(new LiftCommand(0.5));
 //		right6.whenPressed(new DistanceDriveCommand(-0.7, 12));
 //		right7.whenPressed(new DistanceDriveCommand(0.7, 12));
+		claw2.whenPressed(new AngleTurnCommand(0.5, -90));
+		claw3.whenPressed(new AngleTurnCommand(0.5, 90));
+		claw4.whenPressed(new RectangleDriveCommandGroup());
 	}
 }
