@@ -2,6 +2,8 @@ package org.usfirst.frc.team3506.robot.subsystems;
 
 import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
 
+import com.analog.adis16448.ADIS16448_IMU;
+
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
@@ -17,9 +19,10 @@ public class DrivetrainSubsystem extends Subsystem {
 	Spark leftMiddleMotor;
 	Spark rightFrontMotor;
 	Spark rightRearMotor;
-	Spark rightMiddleMotor;
+//	Spark rightMiddleMotor;
 	Encoder leftEncoder;
 	Encoder rightEncoder;
+	ADIS16448_IMU gyro;
 	int wheelDiameter = 6;
     int pulsesPerRev = 2048;
     double distancePerPulse = Math.PI * wheelDiameter / pulsesPerRev;
@@ -36,7 +39,9 @@ public class DrivetrainSubsystem extends Subsystem {
 		rightFrontMotor = new Spark(1);
 		rightFrontMotor.setInverted(true);
 		rightRearMotor = new Spark(9);
-		rightMiddleMotor = new Spark(10);
+//		rightMiddleMotor = new Spark(10);
+		
+		gyro = new ADIS16448_IMU();
 		
 		leftEncoder = new Encoder(1, 0, true, EncodingType.k4X);
 		rightEncoder = new Encoder(2, 3, true, EncodingType.k4X);
@@ -52,7 +57,11 @@ public class DrivetrainSubsystem extends Subsystem {
 		leftMiddleMotor.set(leftSpeed);
 		rightFrontMotor.set(rightSpeed);
 		rightRearMotor.set(rightSpeed);
-		rightMiddleMotor.set(rightSpeed);
+//		rightMiddleMotor.set(rightSpeed);
+	}
+	
+	public ADIS16448_IMU getGyro() {
+	    return gyro;
 	}
 	
 	public double getLeftEncoderDistance() {

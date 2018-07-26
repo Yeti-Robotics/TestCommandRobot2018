@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team3506.robot;
 
+import java.sql.Driver;
+
 import org.usfirst.frc.team3506.robot.subsystems.ClawSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.DrivetrainSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.GrabberSubsytem;
@@ -119,6 +121,9 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		System.out.println(drivetrainSubsystem.getGyro().getAngleX());
+		System.out.println(drivetrainSubsystem.getGyro().getAngleY());
+		System.out.println(drivetrainSubsystem.getGyro().getAngleZ());
 	}
 
 	/**
