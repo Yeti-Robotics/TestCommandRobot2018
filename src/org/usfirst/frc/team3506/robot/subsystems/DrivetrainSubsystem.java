@@ -2,6 +2,7 @@ package org.usfirst.frc.team3506.robot.subsystems;
 
 import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
@@ -23,6 +24,7 @@ public class DrivetrainSubsystem extends Subsystem {
 	int wheelDiameter = 6;
     int pulsesPerRev = 2048;
     double distancePerPulse = Math.PI * wheelDiameter / pulsesPerRev;
+    ADXRS450_Gyro gyro;
     
     double pulsesPer360 = 11280;
     double degreePerPulse = 360.0 / pulsesPer360;
@@ -37,6 +39,7 @@ public class DrivetrainSubsystem extends Subsystem {
 		rightFrontMotor.setInverted(true);
 		rightRearMotor = new Spark(9);
 		rightMiddleMotor = new Spark(10);
+		gyro = new ADXRS450_Gyro();
 		
 		leftEncoder = new Encoder(1, 0, true, EncodingType.k4X);
 		rightEncoder = new Encoder(2, 3, true, EncodingType.k4X);
@@ -84,6 +87,10 @@ public class DrivetrainSubsystem extends Subsystem {
 	public void setEncoderAngle() {
 	    leftEncoder.setDistancePerPulse(degreePerPulse);
         rightEncoder.setDistancePerPulse(degreePerPulse);
+	}
+	
+	public double getAngleDegrees() {
+		return gyro.getAngle() * 180.0 / Math.PI;
 	}
 }
 
