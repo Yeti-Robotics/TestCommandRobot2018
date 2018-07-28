@@ -20,6 +20,7 @@ public class GyroTurnCommand2 extends Command {
 
 	// Called just before this Command runs the first time
     protected void initialize() {
+    		Robot.drivetrainSubsystem.resetGyro();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,6 +35,7 @@ public class GyroTurnCommand2 extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    		Robot.drivetrainSubsystem.drive(0, 0);
     }
 
     // Called when another command which requires one or more of the same

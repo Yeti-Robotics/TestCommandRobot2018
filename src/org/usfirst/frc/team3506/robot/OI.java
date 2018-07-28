@@ -8,6 +8,7 @@
 package org.usfirst.frc.team3506.robot;
 
 import org.usfirst.frc.team3506.robot.commands.AngleTurnCommand;
+import org.usfirst.frc.team3506.robot.commands.GyroTurnCommand2;
 import org.usfirst.frc.team3506.robot.commands.LiftCommand;
 import org.usfirst.frc.team3506.robot.commands.RectangleDriveCommandGroup;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
@@ -46,6 +47,8 @@ public class OI {
 		JoystickButton claw2 = new JoystickButton(clawJoystick, 2);
 		JoystickButton claw3 = new JoystickButton(clawJoystick, 3);
 		JoystickButton claw4 = new JoystickButton(clawJoystick, 4);
+		JoystickButton claw5 = new JoystickButton(clawJoystick, 5);
+		JoystickButton claw6 = new JoystickButton(clawJoystick, 6);
 		
 		left8.whenPressed(new UniversalTimedDriveCommand(0.4, -0.4, 3));
 		left9.whenPressed(new UniversalTimedDriveCommand(-0.7, 0.7, 3));
@@ -61,5 +64,7 @@ public class OI {
 		claw2.whenPressed(new AngleTurnCommand(0.5, -90));
 		claw3.whenPressed(new AngleTurnCommand(0.5, 90));
 		claw4.whenPressed(new RectangleDriveCommandGroup());
+		claw5.whenPressed(new GyroTurnCommand2(0.4, 90));
+		claw6.whenPressed(new GyroTurnCommand2(-0.4, 90));
 	}
 }

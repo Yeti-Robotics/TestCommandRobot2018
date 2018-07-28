@@ -90,7 +90,11 @@ public class DrivetrainSubsystem extends Subsystem {
 	}
 	
 	public double getAngleDegrees() {
-		return gyro.getAngle() * 180.0 / Math.PI;
+		return gyro.getAngle();
+	}
+	
+	public void resetGyro() {
+		gyro.reset();
 	}
 }
 
