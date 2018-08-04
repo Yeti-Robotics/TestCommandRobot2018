@@ -121,9 +121,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		System.out.println(drivetrainSubsystem.getGyro().getAngleX());
-		System.out.println(drivetrainSubsystem.getGyro().getAngleY());
-		System.out.println(drivetrainSubsystem.getGyro().getAngleZ());
+		System.out.println(drivetrainSubsystem.getGyro().getAngle());
 	}
 
 	/**
