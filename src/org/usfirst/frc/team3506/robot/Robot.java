@@ -7,6 +7,9 @@
 
 package org.usfirst.frc.team3506.robot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.usfirst.frc.team3506.robot.subsystems.ClawSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.DrivetrainSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.GrabberSubsytem;
@@ -32,6 +35,9 @@ public class Robot extends TimedRobot {
 	public static ClawSubsystem clawSubsystem;
 	public static GrabberSubsytem grabberSubsytem;
 	public static LiftSubsystem liftSubsystem;
+	public static boolean recording;
+	public static boolean playing;
+	public static List<RobotInput> inputs = new ArrayList<>();
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -119,6 +125,16 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
+		if (recording) {
+			double leftY = oi.leftJoystick.getY();
+			double rightY = oi.rightJoystick.getY();
+			RobotInput input = new RobotInput(leftY, rightY);
+			inputs.add(input);
+		}
+		
+		SmartDashboard.putBoolean("Recording", recording);
+		SmartDashboard.putBoolean("Playing", playing);
 	}
 
 	/**
