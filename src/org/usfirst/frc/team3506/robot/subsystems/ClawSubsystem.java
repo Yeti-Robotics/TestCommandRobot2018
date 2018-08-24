@@ -2,6 +2,8 @@ package org.usfirst.frc.team3506.robot.subsystems;
 
 import org.usfirst.frc.team3506.robot.commands.UserClawCommand;
 
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -10,14 +12,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class ClawSubsystem extends Subsystem {
 	
-	Spark leftIntakeMotor;
-	Spark rightIntakeMotor;
-	Spark wristMotor;
+	CANTalon leftIntakeMotor;
+	CANTalon rightIntakeMotor;
+	CANTalon wristMotor;
 	
 	public ClawSubsystem() {
-		leftIntakeMotor = new Spark(3);
-		rightIntakeMotor = new Spark(4);
-		wristMotor = new Spark(2);
+		leftIntakeMotor = new CANTalon(3);
+		rightIntakeMotor = new CANTalon(4);
+		wristMotor = new CANTalon(2);
 	}
 
 	public void initDefaultCommand() {

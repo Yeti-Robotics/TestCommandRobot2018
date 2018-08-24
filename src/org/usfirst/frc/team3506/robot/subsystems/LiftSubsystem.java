@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3506.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Spark;
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -8,11 +9,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class LiftSubsystem extends Subsystem {
 	
-	Spark motor;
+    CANTalon leftMotor;
+    CANTalon rightMotor;
 
     public LiftSubsystem() {
-		motor = new Spark(5);
-		motor.setInverted(true);
+        leftMotor = new CANTalon(5);
+		rightMotor = new CANTalon(6);
+		leftMotor.setInverted(true);
+		rightMotor.setInverted(true);
 	}
 
     public void initDefaultCommand() {
@@ -20,7 +24,8 @@ public class LiftSubsystem extends Subsystem {
     }
     
     public void lift(double speed) {
-    		motor.set(speed);
+        leftMotor.set(speed);
+    	rightMotor.set(speed);
     }
 }
 
